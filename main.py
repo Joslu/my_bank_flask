@@ -1,9 +1,9 @@
 
-import requests
+import requests 
 import base64
 from flask_cors import CORS
 import sqlite3 as sqlite3
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy 
 from flask import Flask, request, jsonify 
 from models import db, Users
 import os
@@ -107,3 +107,4 @@ def get_data():
 
 if __name__ == "__main__":
     app.run(debug=True)
+    #print("ready to run")

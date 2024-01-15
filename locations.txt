@@ -1,0 +1,17 @@
+location /logout {
+                 proxy_pass http://apibank;
+                 }
+
+location /login {
+                 proxy_pass http://apibank;
+                 }
+
+location /create-user {
+                 proxy_pass http://apibank;
+                 }
+
+location /get-data {
+                 proxy_pass http://apibank;
+                 }
+
+
