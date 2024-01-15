@@ -20,8 +20,8 @@ app.config["SQLALCHEMY_TRACK_NOTIFICATIONS"] = False
 
 # Conectar db
 db.init_app(app)
-CORS(app)
-
+#CORS(app)
+CORS(app, resources={r"/*": {"origins": "https://my-bank-nextjs.vercel.app"}},allow_headers=["Content-Type", "Authorization", "Origin"])
 
 # Belvo credentials
 api_url = 'https://sandbox.belvo.com/api/'
