@@ -16,6 +16,8 @@ El backend sigue una estructura organizada en varias carpetas y archivos:
 - **Framework:** Flask (Python) 🐍
 - **Base de Datos:** SQLite 🗃️
 - **ORM:** SQLAlchemy (Posiblemente, según la implementación)
+- **Servidor Web:** Nginx 🚀
+- **Instancia AWS EC2:** t2.micro (Ubuntu) ☁️
 
 ## Funcionalidades Principales
 - **Registro y Autenticación:** Implementa rutas y controladores para el registro y autenticación de usuarios.
@@ -28,3 +30,7 @@ El backend sigue una estructura organizada en varias carpetas y archivos:
 3. Instala las dependencias: `pip install -r requirements.txt`
 4. Ejecuta el servidor Flask: `python main.py`
 5. Accede a la aplicación en tu navegador: [http://localhost:5000](http://localhost:5000)
+
+# Despliegue en AWS E2C 
+
+Este proyecto ha sido desplegado en E2C para su implementación en un entorno de producción. A continuación se detallan los pasos necesarios para replicar el despliegue:
