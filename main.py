@@ -1,7 +1,7 @@
 
 import requests 
 import base64
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import sqlite3 as sqlite3
 from flask_sqlalchemy import SQLAlchemy 
 from flask import Flask, request, jsonify 
@@ -21,7 +21,8 @@ app.config["SQLALCHEMY_TRACK_NOTIFICATIONS"] = False
 # Conectar db
 db.init_app(app)
 #CORS(app)
-CORS(app, resources={r"/*": {"origins": "https://my-bank-nextjs.vercel.app"}},allow_headers=["Content-Type", "Authorization", "Origin"])
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 # Belvo credentials
 api_url = 'https://sandbox.belvo.com/api/'
@@ -36,16 +37,19 @@ headers = {'Authorization': f'Basic {encoded_credentials}',}
 
 # Routes
 @app.route("/")
+@cross_origin()
 def home():
     return "Wrlcome to my server"
 
 @app.route('/logout', methods = ['POST'])
+@cross_origin()
 def logOut():
     print("Se ha cerrado sesion byeeee")
     return jsonify({'message': 'Log out successfully'}), 200
 
 
 @app.route('/login', methods=['POST'])
+@cross_origin()
 def login():
     data = request.json
     email = data.get('user_email')
@@ -60,6 +64,7 @@ def login():
     
     
 @app.route('/create-user', methods=['POST'])
+@cross_origin()
 def create_user():
     data = request.json
     name = data.get('user_name')
@@ -83,6 +88,7 @@ def create_user():
 
 #GET INFO BELVO
 @app.route('/get-data', methods=['GET'])
+@cross_origin()
 def get_data():
     try:
         response = requests.get(f"{api_url}institutions/?page_size=100", headers=headers)
